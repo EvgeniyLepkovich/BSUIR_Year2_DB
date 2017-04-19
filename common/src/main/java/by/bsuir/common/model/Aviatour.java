@@ -19,6 +19,8 @@ public class Aviatour {
    @GeneratedValue(strategy = GenerationType.AUTO, generator = "aviatour_seq")
    @SequenceGenerator(name = "aviatour_seq", sequenceName = "aviatour_seq")
    private long aviatourId;
+   @Column(name = "aviatourStatusId", nullable = false)
+   private long aviatourStatusId;
    @Column(name = "aviacompanyId", nullable = false)
    private long aviacompanyId;
    @Column(name = "goalId", nullable = false)
@@ -33,6 +35,10 @@ public class Aviatour {
    @ManyToOne(fetch = FetchType.LAZY, optional = true)
    @JoinColumn(name = "goalId", insertable = false, updatable = false)
    private Goal goal;
+
+   @ManyToOne(fetch = FetchType.LAZY, optional = true)
+   @JoinColumn(name = "aviatourStatusId", insertable = false, updatable = false)
+   private AviatourStatus aviatourStatus;
 
    @ManyToOne(fetch = FetchType.LAZY, optional = true)
    @JoinColumn(name = "aviacompanyId", insertable = false, updatable = false)
